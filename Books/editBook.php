@@ -23,7 +23,7 @@ $stmt->execute();
 $book = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$book) {
-    echo "Libri nuk u gjet!";
+    echo "The book was not found!";
     exit();
 }
 
@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
         header("Location: books.php");
         exit();
     } else {
-        $error = "Titulli dhe Autori janë të detyrueshëm.";
+        $error = "The Title and Author are required.";
     }
 }
 ?>
@@ -68,27 +68,27 @@ if (isset($_POST['submit'])) {
     <?php } ?>
     <form method="post" action="">
         <div class="mb-3">
-            <label>Titulli:</label>
+            <label>Title:</label>
             <input type="text" name="title" class="form-control" value="<?= htmlspecialchars($book['title']) ?>" required>
         </div>
         <div class="mb-3">
-            <label>Autori:</label>
+            <label>Author:</label>
             <input type="text" name="author" class="form-control" value="<?= htmlspecialchars($book['author']) ?>" required>
         </div>
         <div class="mb-3">
-            <label>Përshkrimi:</label>
+            <label>Description:</label>
             <textarea name="description" class="form-control"><?= htmlspecialchars($book['description']) ?></textarea>
         </div>
         <div class="mb-3">
-            <label>Zhanri:</label>
+            <label>Genre:</label>
             <input type="text" name="genre" class="form-control" value="<?= htmlspecialchars($book['genre']) ?>">
         </div>
         <div class="mb-3">
-            <label>Vlerësimi (1-5):</label>
+            <label>Rating (1-5):</label>
             <input type="number" name="rating" class="form-control" min="1" max="5" value="<?= htmlspecialchars($book['rating']) ?>">
         </div>
-        <button type="submit" name="submit" class="btn btn-primary">Ruaj Ndryshimet</button>
-        <a href="books.php" class="btn btn-secondary">Anulo</a>
+        <button type="submit" name="submit" class="btn btn-primary">Save Changes</button>
+        <a href="books.php" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

@@ -9,9 +9,9 @@ if (isset($_POST['register'])) {
 
    
     if (empty($username) || empty($password) || empty($confirm_password)) {
-        $error = "Ju lutem plotësoni të gjitha fushat.";
+        $error = "Please fill in all the fields";
     } elseif ($password !== $confirm_password) {
-        $error = "Fjalëkalimet nuk përputhen.";
+        $error = "The passwords do not match.";
     } else {
         
         $sql = "SELECT * FROM users WHERE username = :username LIMIT 1";
@@ -20,7 +20,7 @@ if (isset($_POST['register'])) {
         $stmt->execute();
 
         if ($stmt->fetch(PDO::FETCH_ASSOC)) {
-            $error = "Ky username është marrë tashmë.";
+            $error = "This username is already in use.";
         } else {
            
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -30,11 +30,11 @@ if (isset($_POST['register'])) {
             $stmt->bindParam(":password", $hashed_password);
 
             if ($stmt->execute()) {
-                $_SESSION['success'] = "Regjistrimi u krye me sukses! Tani mund të identifikoheni.";
+                $_SESSION['success'] = "Registration was successful! You can now log in.";
                 header("Location: login.php");
                 exit();
             } else {
-                $error = "Gabim gjatë regjistrimit.";
+                $error = "Error during registration.";
             }
         }
     }
@@ -62,17 +62,17 @@ if (isset($_POST['register'])) {
             <input type="text" name="username" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label>Fjalëkalimi</label>
+            <label>Password</label>
             <input type="password" name="password" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label>Konfirmo fjalëkalimin</label>
+            <label>Confirm Password</label>
             <input type="password" name="confirm_password" class="form-control" required>
         </div>
-        <button type="submit" name="register" class="btn btn-primary w-100">Regjistrohu</button>
+        <button type="submit" name="register" class="btn btn-primary w-100">Register</button>
     </form>
 
-    <p class="mt-3">Keni një llogari? <a href="login.php">Identifikohu këtu</a></p>
+    <p class="mt-3">Do you have an account? <a href="login.php">Log in here</a></p>
 </div>
 
 </body>

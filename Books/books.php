@@ -32,12 +32,12 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1) {
                 $stmt->bindParam(':genre', $genre);
                 $stmt->bindParam(':rating', $rating);
                 $stmt->execute();
-                echo "<div class='alert alert-success'>Libri u shtua me sukses!</div>";
+                echo "<div class='alert alert-success'>The book was added successfully!</div>";
             } catch (PDOException $e) {
-                echo "<div class='alert alert-danger'>Gabim gjatë shtimit të librit: " . $e->getMessage() . "</div>";
+                echo "<div class='alert alert-danger'>Error during the addition of the book: " . $e->getMessage() . "</div>";
             }
         } else {
-            echo "<div class='alert alert-warning'>Ju lutem plotësoni Titullin dhe Autorin.</div>";
+            echo "<div class='alert alert-warning'>Please fill in the Title and Author.</div>";
         }
     }
 }
@@ -109,7 +109,7 @@ $books = $conn->query("SELECT * FROM books")->fetchAll(PDO::FETCH_ASSOC);
                     <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1): ?>
                         <a href="editBook.php?id=<?= $book['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
                         <a href="deleteBook.php?id=<?= $book['id'] ?>" class="btn btn-danger btn-sm"
-                           onclick="return confirm('A jeni të sigurt që dëshironi ta fshini këtë libër?');">Delete</a>
+                           onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
                         <span class="text-muted">Admin cannot reserve"</span>
                     <?php else: ?>
                         

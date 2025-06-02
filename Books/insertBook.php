@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
         header("Location: books.php");
         exit();
     } else {
-        echo "Gabim gjatë shtimit të librit.";
+        echo "Error while adding the book.";
     }
 } else {
     header("Location: addBook.php");

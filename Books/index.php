@@ -13,7 +13,7 @@
 				<h2 class="text-center mb-4">Register</h2>
 				<form method="POST" action="register.php">
 					<div class="mb-3">
-						<label class="form-label">Emri i plotë</label>
+						<label class="form-label">Full Name</label>
 						<input type="text" name="emri" class="form-control" required>
 					</div>
 					<div class="mb-3">

@@ -22,13 +22,13 @@ if (isset($_POST['submit'])) {
                 header("Location: dashboard.php");
                 exit();
             } else {
-                echo "Fjalëkalimi është i pasaktë!";
+                echo "The password is incorrect!";
             }
         } else {
-            echo "Ky përdorues nuk ekziston!";
+            echo "This user does not exist";
         }
     } else {
-        echo "Ju lutem plotësoni të gjitha fushat!";
+        echo "Please fill in all the fields!";
     }
 }
 ?>

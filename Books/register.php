@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
         header("Location: dashboard.php");
         exit();
     } else {
-        echo "Username ose password i gabuar!";
+        echo "Incorrect username or password!";
     }
 }
 ?>

@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     if (empty($username) || empty($password)) {
-        echo "Ju lutem plotësoni të gjitha fushat.";
+        echo "Please fill in all fields.";
         exit();
     }
 
@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         header("Location: dashboard.php");
         exit();
     } else {
-        echo "Username ose password i gabuar!";
+        echo "Incorrect username or password!";
     }
 }
 ?>
